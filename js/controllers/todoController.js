@@ -60,6 +60,13 @@ app.controller('TodoController', ['$scope', 'crudService','$routeParams','$http'
         });
     };
 
+    /*vm.completed = function(completed){
+        if(angular.isDefined(completed)){
+            d.completed = completed;
+        }
+        crudService.set(vm.todo.indexOf(r.entity),1)
+    }; */
+
     vm.init = function(){
         vm.read();
         var pr=function(){
