@@ -1,0 +1,2 @@
+# ngskel
+AngularJs skeleton
