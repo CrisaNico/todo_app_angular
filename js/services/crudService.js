@@ -1,5 +1,5 @@
 app.service('crudService', function($http, limitToFilter){
-    var S = 'http://localhost:5984/taskscrisafulli';
+    var S = 'http://localhost:5984/taskscrisafulli/';
     var onError = function(response){
         console.log("Errore di chiamata: ", response)
     };

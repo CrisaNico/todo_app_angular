@@ -19,10 +19,10 @@ app.controller('TodoController', ['$scope', 'crudService','$routeParams','$http'
     };
 
     var populateData = function(response){
-        var data = response.data && response.data.docs ||[];
-        vm.data=JSON.parse(JSON.stringify(data));
-        if(vm.id){
+        vm.data = response.data && response.data.docs ||[];
+        if(vm.id){            
             vm.d=vm.data[0] || {};
+            vm.d.deadline=new Date(vm.d.deadline);
             if (!vm.d.todo) vm.d.todo=[];
             vm.gridTodoOptions.data=vm.d.todo;
         }
