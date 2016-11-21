@@ -37,4 +37,34 @@ app.controller('ToDoControlelr', ['$scope', 'crudService', '$routeParams', '$htt
         })
     };
 
+    vm.read = function(){
+        var fnd={"cat":"eventi"};
+        if(vm.id) fnd._id=vm.id;
+        crudService.fnd(fnd, populateData);
+    };
+    
+    vm.save = function(){
+        vm.d.cat='eventi';
+        if (vm.id=='new') delete(vm.id)
+        crudService.set(vm.d,function(r){
+            if (!vm.id){
+                windows.location="#/todo/"+r.id
+            }
+        });
+    };
+
+    vm.remove = function(){
+        crudService.del(vm.d,function(r){
+            window.location="#/todo/"
+        });
+    };
+
+    vm.init = function(){
+        vm.read();
+        var pr=function(){
+            $('[ng-model="cognome]').focus()
+        }
+        $(pr)
+    };
+    vm.init();
 }]);
