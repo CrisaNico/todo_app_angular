@@ -18,5 +18,21 @@ app.controller('ToDoControlelr', ['$scope', 'crudService', '$routeParams', '$htt
         }
     };
 
-    
+    var populateData = function(response){
+        var data = response.data && response.data.docs ||[];
+        vm.data=JSON.parse(JSON.stringify(data));
+        if(vm.id){
+            vm.d=vm.data[0] || {};
+            vm.gridTodoOptions.data=vm.d.todo;
+        }
+    };
+
+    vm.createTodo=function(){
+        vm.d.todo.push({})
+    };
+
+    vm.removeTodo = function(){
+
+    };
+
 }]);
