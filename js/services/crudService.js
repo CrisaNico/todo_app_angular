@@ -11,7 +11,7 @@ app.service('crudService', function($http, limitToFilter){
         set: function(D,callback){
             if (!D) return [{'error':'Nessun dato da inserire.'}];
             if (D._id=='new' || D._id==null) delete (D._id)
-            if (D_id){
+            if (D._id){
                 $http.put(S+D._id,D).success(callback);
             }else{
                 $http.post(S,D).success(callback).error(onError);

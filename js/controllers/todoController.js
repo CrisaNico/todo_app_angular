@@ -1,6 +1,6 @@
-app.controller('ToDoControlelr', ['$scope', 'crudService', '$routeParams', '$http', function($scope, crudService,$routeParams,$http){
+app.controller('TodoController', ['$scope', 'crudService','$routeParams','$http', function($scope, crudService,$routeParams,$http){
     var vm = $scope;
-    windows.vm=vm;
+    window.vm=vm;
     vm.id= $routeParams && $routeParams.id || false;
     vm.data = [];
     vm.gridTodoOptions={
@@ -23,6 +23,7 @@ app.controller('ToDoControlelr', ['$scope', 'crudService', '$routeParams', '$htt
         vm.data=JSON.parse(JSON.stringify(data));
         if(vm.id){
             vm.d=vm.data[0] || {};
+            if (!vm.d.todo) vm.d.todo=[];
             vm.gridTodoOptions.data=vm.d.todo;
         }
     };
@@ -48,7 +49,7 @@ app.controller('ToDoControlelr', ['$scope', 'crudService', '$routeParams', '$htt
         if (vm.id=='new') delete(vm.id)
         crudService.set(vm.d,function(r){
             if (!vm.id){
-                windows.location="#/todo/"+r.id
+                window.location="#/todo/"+r.id
             }
         });
     };

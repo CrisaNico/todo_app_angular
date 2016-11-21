@@ -1,3 +1,35 @@
+<section ng-if="!id">
 <h2>
-    THE TODO APP!
+    THE TODO APP! <a class="btn btn-success" href="#/todo/new"><i class="fa fa-file-o"></i></a>
 </h2>
+<ul>
+    <li ng-repeat="d in data">
+        <a ng-href="#/todo/{{d._id}}">{{d.tasks|uppercase}}</a>
+    </li>
+</ul>
+</section>
+
+<section ng-if="id">
+    <h1>
+        {{d.tasks}} <span ng-hide="d.tasks">Nuovo evento</span>
+    </h1>
+    <form ng-submit="save()" class="well">
+        <p class="form-group">
+            <label>Task da fare</label>
+            <input class="form-control" ng-model="d.tasks" autofocus />
+            <label>Data di scadenza</label>
+            <input class="form-control" ng-model="d.deadline" />
+        </p>
+            <button type="submit" class="btn btn-primary"  data-toggle="tooltip" data-placement="bottom" title="Salva"><i class="fa fa-save"></i> Salva</button>
+			<a accesskey="n" class="btn btn-success" href="#/todo/new"><i class="fa fa-file-o"></i> Nuovo</a>
+			<a accesskey="l" class="btn btn-default" href="#/todo"><i class="fa fa-table"></i> Elenco</a>
+			<a accesskey="x" class="btn btn-danger" ng-click="remove()"><i class="fa fa-trash"></i> Elimina</a>
+    </form>
+    <h3>Todo List
+        <span style="zoom:75%" class="pull-right">
+            <button ng-click="createTodo()" class="btn btn-small btn-succes"><i class="fa fa-file-o"></i></button>
+            <button ng-click="removeTodo()" class="btnl btn-small btn-danger"><i class="fa fa-trash-o"></i></button>
+        </span>
+    </h3>
+    <div id="gridTodo" ui-grid="gridTodoOptions" class="grd" ui-grid-edit ui-grid-cellNav ui-grid-row-edit ui-grid-selection></div>
+</section>

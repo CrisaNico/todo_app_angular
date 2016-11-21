@@ -5,8 +5,12 @@ app.conf=function ($routeProvider) {
       templateUrl: 'views/home.html' 
     })
     .when('/todo', {
-      controller: "ToDoController",
+      controller: "TodoController",
       templateUrl: "views/todo.html"
+    })
+    .when('/todo/:id', {
+      controller: 'TodoController',
+      templateUrl: 'views/todo.html'
     })
     .otherwise({ 
       redirectTo: '/' 
