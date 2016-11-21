@@ -32,7 +32,9 @@ app.controller('ToDoControlelr', ['$scope', 'crudService', '$routeParams', '$htt
     };
 
     vm.removeTodo = function(){
-
+        vm.gridTodoApi.grid.rows.map(function(r){
+            if (r.isSelected) vm.d.todo.splice(vm.d.todo.indexOf(r.entity),1)
+        })
     };
 
 }]);
